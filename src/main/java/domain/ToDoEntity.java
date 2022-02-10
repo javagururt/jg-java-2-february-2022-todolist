@@ -1,12 +1,12 @@
+package domain;
+
 import java.util.Objects;
 
-class ToDoEntity {
+public class ToDoEntity {
 
     private int id;
     private String name;
     private String description;
-
-
 
     public int getId() {
         return id;
@@ -47,7 +47,7 @@ class ToDoEntity {
 
     @Override
     public String toString() {
-        return "ToDoEntity{" +
+        return "domain.ToDoEntity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +

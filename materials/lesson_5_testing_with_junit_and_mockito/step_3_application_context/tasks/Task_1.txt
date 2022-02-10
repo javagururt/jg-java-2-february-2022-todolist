@@ -11,10 +11,10 @@
 	private static AddBookService addBookService = new AddBookService(database, addBookValidator);
 	private static RemoveBookService removeBookService = new RemoveBookService(database);
 	private static GetAllBooksService getAllBooksService = new GetAllBooksService(database);
-	private static UIAction addBookUIAction = new AddBookUIAction(addBookService);
-	private static UIAction removeBookUIAction = new RemoveBookUIAction(removeBookService);
-	private static UIAction getAllBooksUIAction = new GetAllBooksUIAction(getAllBooksService);
-	private static UIAction exitUIAction = new ExitUIAction();
+	private static console.UIAction addBookUIAction = new AddBookUIAction(addBookService);
+	private static console.UIAction removeBookUIAction = new RemoveBookUIAction(removeBookService);
+	private static console.UIAction getAllBooksUIAction = new GetAllBooksUIAction(getAllBooksService);
+	private static console.UIAction exitUIAction = new ExitUIAction();
 
 и находится в главном классе приложения.
 
