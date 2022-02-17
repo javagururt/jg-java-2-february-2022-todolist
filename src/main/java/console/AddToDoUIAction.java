@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import core.AddToDoService;
 import domain.ToDoEntity;
+import dto.AddToDoRequest;
 
 public class AddToDoUIAction implements UIAction {
 
@@ -21,11 +22,12 @@ public class AddToDoUIAction implements UIAction {
         System.out.println("Please enter todo description: ");
         String description = scanner.nextLine();
 
-        ToDoEntity entity = new ToDoEntity();
-        entity.setName(name);
-        entity.setDescription(description);
+        var request = new AddToDoRequest();
+        request.setName(name);
+        request.setDescription(description);
 
-        addTaskService.add(entity);
+        var response = addTaskService.add(request);
+        System.out.println("Received response: " + response);
     }
 
     @Override
