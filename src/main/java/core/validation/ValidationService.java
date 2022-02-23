@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import domain.ToDoEntity;
+import dto.AddToDoRequest;
 
 public class ValidationService {
 
@@ -15,20 +16,20 @@ public class ValidationService {
         this.validationRules = validationRules;
     }
 
-    public List<CoreError> validate(ToDoEntity toDoEntity) {
+    public List<CoreError> validate(AddToDoRequest request) {
         List<CoreError> errors = new ArrayList<>();
-        if (toDoEntity == null) {
+        if (request == null) {
             errors.add(new CoreError("ToDo must not be null"));
             return errors;
         }
 
         return validationRules.stream()
-                .map(rule -> mapError(rule, toDoEntity))
+                .map(rule -> mapError(rule, request))
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }
 
-    private CoreError mapError(ValidationRule rule, ToDoEntity entity) {
+    private CoreError mapError(ValidationRule rule, AddToDoRequest entity) {
         try {
             rule.validate(entity);
         } catch (ValidationException e) {
