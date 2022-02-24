@@ -12,8 +12,8 @@ public class FindAllToDoUIAction implements UIAction {
 
     @Override
     public void execute() {
-        findAllToDoService.findAll()
-                .forEach(System.out::println);
+        var response = findAllToDoService.findAll();
+        System.out.println(response);
     }
 
     @Override

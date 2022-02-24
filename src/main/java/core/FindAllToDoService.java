@@ -3,6 +3,8 @@ package core;
 import java.util.List;
 
 import domain.ToDoEntity;
+import dto.FindAllToDoResponse;
+import dto.ToDoDTO;
 import repository.ToDoRepository;
 
 public class FindAllToDoService {
@@ -13,7 +15,14 @@ public class FindAllToDoService {
         this.repository = repository;
     }
 
-    public List<ToDoEntity> findAll() {
-        return repository.findAll();
+    public FindAllToDoResponse findAll() {
+        var dtos = repository.findAll().stream()
+                .map(this::convert)
+                .toList();
+        return new FindAllToDoResponse(dtos);
+    }
+
+    private ToDoDTO convert(ToDoEntity entity) {
+        return new ToDoDTO(entity.getId(), entity.getName(), entity.getDescription());
     }
 }

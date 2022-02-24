@@ -1,34 +1,16 @@
-package domain;
+package dto;
 
 import java.util.Objects;
 
-public class ToDoEntity {
+public class ToDoDTO {
 
-    private Integer id;
+    private int id;
     private String name;
     private String description;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
+    public ToDoDTO(int id, String name, String description) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
         this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
         this.description = description;
     }
 
@@ -36,8 +18,8 @@ public class ToDoEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ToDoEntity that = (ToDoEntity) o;
-        return id == that.id && Objects.equals(name, that.name) && Objects.equals(description, that.description);
+        ToDoDTO toDoDTO = (ToDoDTO) o;
+        return id == toDoDTO.id && Objects.equals(name, toDoDTO.name) && Objects.equals(description, toDoDTO.description);
     }
 
     @Override
@@ -47,7 +29,7 @@ public class ToDoEntity {
 
     @Override
     public String toString() {
-        return "domain.ToDoEntity{" +
+        return "ToDoDTO{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
