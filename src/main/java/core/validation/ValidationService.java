@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import domain.ToDoEntity;
 import dto.AddToDoRequest;
 
 public class ValidationService {
@@ -24,14 +23,14 @@ public class ValidationService {
         }
 
         return validationRules.stream()
-                .map(rule -> mapError(rule, request))
+                .map(rule -> validate(rule, request))
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }
 
-    private CoreError mapError(ValidationRule rule, AddToDoRequest entity) {
+    private CoreError validate(ValidationRule rule, AddToDoRequest request) {
         try {
-            rule.validate(entity);
+            rule.validate(request);
         } catch (ValidationException e) {
             return new CoreError(e.getMessage());
         }
