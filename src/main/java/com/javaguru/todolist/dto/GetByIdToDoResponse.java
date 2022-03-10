@@ -1,0 +1,14 @@
+package com.javaguru.todolist.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class GetByIdToDoResponse {
+
+    private ToDoDTO todo;
+
+}
