@@ -1,0 +1,11 @@
+delete all containers:
+docker rm -f $(docker ps -aq)
+
+delete all images:
+docker rmi -f $(docker images -aq)
+
+docker build:
+docker build -t mysql .
+
+docker run:
+docker run -p 3306:3306 mysql
