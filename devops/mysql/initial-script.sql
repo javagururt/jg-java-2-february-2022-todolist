@@ -4,10 +4,7 @@ USE todolist;
 CREATE TABLE IF NOT EXISTS todo (
   id BIGINT NOT NULL AUTO_INCREMENT,
   name VARCHAR(100) NOT NULL,
-  description VARCHAR(100) NULL,
+  description VARCHAR(255) NULL,
   PRIMARY KEY (id)
 )
   ENGINE = InnoDB;
-
-ALTER TABLE tasks ADD CONSTRAINT user_tasks_fk FOREIGN KEY (user_id) REFERENCES users(id);
-

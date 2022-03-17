@@ -1,7 +1,6 @@
 package com.javaguru.todolist.console;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -13,7 +12,7 @@ public class UIMenu {
     private final List<UIAction> uiActions;
 
     @Autowired
-    public UIMenu(@Qualifier("actionsWithoutUpdate") List<UIAction> uiActions) {
+    public UIMenu(List<UIAction> uiActions) {
         this.uiActions = uiActions;
     }
 
