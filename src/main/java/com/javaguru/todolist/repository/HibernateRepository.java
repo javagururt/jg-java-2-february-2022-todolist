@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import com.javaguru.todolist.domain.ToDoEntity;
 
-public interface ToDoRepository {
+public interface HibernateRepository {
 
     ToDoEntity save(ToDoEntity toDoEntity);
 

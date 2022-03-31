@@ -3,16 +3,16 @@ package com.javaguru.todolist.core;
 import com.javaguru.todolist.domain.ToDoEntity;
 import com.javaguru.todolist.dto.FindAllToDoResponse;
 import com.javaguru.todolist.dto.ToDoDTO;
-import com.javaguru.todolist.repository.ToDoRepository;
+import com.javaguru.todolist.repository.HibernateRepository;
 
 import org.springframework.stereotype.Component;
 
 @Component
 public class FindAllToDoService {
 
-    private final ToDoRepository repository;
+    private final HibernateRepository repository;
 
-    public FindAllToDoService(ToDoRepository repository) {
+    public FindAllToDoService(HibernateRepository repository) {
         this.repository = repository;
     }
 

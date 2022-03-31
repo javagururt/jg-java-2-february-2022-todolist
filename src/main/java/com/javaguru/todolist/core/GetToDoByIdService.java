@@ -3,16 +3,16 @@ package com.javaguru.todolist.core;
 import com.javaguru.todolist.domain.ToDoEntity;
 import com.javaguru.todolist.dto.GetByIdToDoResponse;
 import com.javaguru.todolist.dto.ToDoDTO;
-import com.javaguru.todolist.repository.ToDoRepository;
+import com.javaguru.todolist.repository.HibernateRepository;
 
 import org.springframework.stereotype.Component;
 
 @Component
 public class GetToDoByIdService {
 
-    private final ToDoRepository toDoRepository;
+    private final HibernateRepository toDoRepository;
 
-    public GetToDoByIdService(ToDoRepository toDoRepository) {
+    public GetToDoByIdService(HibernateRepository toDoRepository) {
         this.toDoRepository = toDoRepository;
     }
 

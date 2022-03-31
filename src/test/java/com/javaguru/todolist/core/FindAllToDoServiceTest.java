@@ -11,7 +11,7 @@ import java.util.List;
 import com.javaguru.todolist.domain.ToDoEntity;
 import com.javaguru.todolist.dto.FindAllToDoResponse;
 import com.javaguru.todolist.dto.ToDoDTO;
-import com.javaguru.todolist.repository.ToDoRepository;
+import com.javaguru.todolist.repository.HibernateRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
 class FindAllToDoServiceTest {
 
     @Mock
-    private ToDoRepository repository;
+    private HibernateRepository repository;
 
     @InjectMocks
     private FindAllToDoService findAllToDoService;

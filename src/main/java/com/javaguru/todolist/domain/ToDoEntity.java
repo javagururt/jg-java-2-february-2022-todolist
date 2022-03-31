@@ -2,10 +2,24 @@ package com.javaguru.todolist.domain;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity(name = "todo")
+@Table(name = "todo")
 public class ToDoEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
+    @Column(name = "name", unique = true, nullable = false, length = 50)
     private String name;
+    @Column(name = "description")
     private String description;
 
     public Integer getId() {

@@ -4,7 +4,7 @@ import com.javaguru.todolist.core.validation.ValidationService;
 import com.javaguru.todolist.domain.ToDoEntity;
 import com.javaguru.todolist.dto.AddToDoRequest;
 import com.javaguru.todolist.dto.AddToDoResponse;
-import com.javaguru.todolist.repository.ToDoRepository;
+import com.javaguru.todolist.repository.HibernateRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,16 +13,9 @@ import org.springframework.stereotype.Service;
 public class AddToDoService {
 
     @Autowired
-    private  ToDoRepository repository;
+    private HibernateRepository repository;
     @Autowired
     private ValidationService validationService;
-
-//    @Autowired
-//    public AddToDoService(ToDoRepository repository,
-//                          ValidationService validationService) {
-//        this.repository = repository;
-//        this.validationService = validationService;
-//    }
 
     public AddToDoResponse add(AddToDoRequest request) {
         System.out.println("Received request: " + request);

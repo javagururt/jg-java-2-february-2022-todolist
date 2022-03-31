@@ -12,7 +12,7 @@ import com.javaguru.todolist.core.validation.CoreError;
 import com.javaguru.todolist.core.validation.ValidationService;
 import com.javaguru.todolist.domain.ToDoEntity;
 import com.javaguru.todolist.dto.AddToDoResponse;
-import com.javaguru.todolist.repository.ToDoRepository;
+import com.javaguru.todolist.repository.HibernateRepository;
 
 import static com.javaguru.todolist.core.TestDtoFactory.createRequest;
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,7 +26,7 @@ class AddToDoServiceTest {
 
 
     @Mock
-    private ToDoRepository repository;
+    private HibernateRepository repository;
 
     @Mock
     private ValidationService validationService;

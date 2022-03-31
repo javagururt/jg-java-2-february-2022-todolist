@@ -2,16 +2,16 @@ package com.javaguru.todolist.core;
 
 import com.javaguru.todolist.domain.ToDoEntity;
 import com.javaguru.todolist.dto.UpdateToDoRequest;
-import com.javaguru.todolist.repository.ToDoRepository;
+import com.javaguru.todolist.repository.HibernateRepository;
 
 import org.springframework.stereotype.Component;
 
 @Component
 public class UpdateToDoService {
 
-    private final ToDoRepository repository;
+    private final HibernateRepository repository;
 
-    public UpdateToDoService(ToDoRepository repository) {
+    public UpdateToDoService(HibernateRepository repository) {
         this.repository = repository;
     }
 
