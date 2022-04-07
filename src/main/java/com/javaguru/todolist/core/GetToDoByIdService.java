@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class GetToDoByIdService {
 
-    private final HibernateRepository toDoRepository;
+    private final HibernateRepository<ToDoEntity> toDoRepository;
 
-    public GetToDoByIdService(HibernateRepository toDoRepository) {
+    public GetToDoByIdService(HibernateRepository<ToDoEntity> toDoRepository) {
         this.toDoRepository = toDoRepository;
     }
 

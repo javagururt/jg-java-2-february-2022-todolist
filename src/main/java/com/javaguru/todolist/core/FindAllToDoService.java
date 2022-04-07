@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class FindAllToDoService {
 
-    private final HibernateRepository repository;
+    private final HibernateRepository<ToDoEntity> repository;
 
-    public FindAllToDoService(HibernateRepository repository) {
+    public FindAllToDoService(HibernateRepository<ToDoEntity> repository) {
         this.repository = repository;
     }
 

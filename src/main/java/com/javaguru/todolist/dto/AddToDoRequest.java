@@ -10,4 +10,5 @@ public class AddToDoRequest {
     @NonNull
     private String name;
     private String description;
+    private Integer userId;
 }

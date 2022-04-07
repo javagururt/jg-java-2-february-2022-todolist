@@ -9,9 +9,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class UpdateToDoService {
 
-    private final HibernateRepository repository;
+    private final HibernateRepository<ToDoEntity> repository;
 
-    public UpdateToDoService(HibernateRepository repository) {
+    public UpdateToDoService(HibernateRepository<ToDoEntity> repository) {
         this.repository = repository;
     }
 

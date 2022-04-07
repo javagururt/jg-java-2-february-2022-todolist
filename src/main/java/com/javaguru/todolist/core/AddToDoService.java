@@ -13,7 +13,8 @@ import org.springframework.stereotype.Service;
 public class AddToDoService {
 
     @Autowired
-    private HibernateRepository repository;
+    private HibernateRepository<ToDoEntity> todoRepository;
+
     @Autowired
     private ValidationService validationService;
 
@@ -26,8 +27,12 @@ public class AddToDoService {
             response.setErrors(validationResult);
             return response;
         }
+//        var user = userRepository.findById(request.getUserId())
+//                .orElseThrow(() -> new IllegalArgumentException("User with id " + request.getUserId() + " is not found."));
+
         var entity = convert(request);
-        var createdEntity = repository.save(entity);
+        entity.setUserId(request.getUserId());
+        var createdEntity = todoRepository.save(entity);
         System.out.println("Successfully saved: " + createdEntity);
         var response = new AddToDoResponse();
         response.setCreatedToDoId(createdEntity.getId());

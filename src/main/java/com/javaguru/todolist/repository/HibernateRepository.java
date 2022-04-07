@@ -5,11 +5,11 @@ import java.util.Optional;
 
 import com.javaguru.todolist.domain.ToDoEntity;
 
-public interface HibernateRepository {
+public interface HibernateRepository<T> {
 
-    ToDoEntity save(ToDoEntity toDoEntity);
+    T save(T entity);
 
-    List<ToDoEntity> findAll();
+    List<T> findAll();
 
-    Optional<ToDoEntity> findById(Integer id);
+    Optional<T> findById(Integer id);
 }

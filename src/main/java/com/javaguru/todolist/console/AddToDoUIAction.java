@@ -22,13 +22,17 @@ public class AddToDoUIAction implements UIAction {
     public void execute() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter todo name: ");
-        String name = scanner.nextLine();
+        var name = scanner.nextLine();
         System.out.println("Please enter todo description: ");
-        String description = scanner.nextLine();
+        var description = scanner.nextLine();
+        System.out.println("Please enter user id: ");
+        var userStringId = scanner.nextLine();
+        var userId = Integer.parseInt(userStringId);
 
         var request = new AddToDoRequest();
         request.setName(name);
         request.setDescription(description);
+        request.setUserId(userId);
 
         var response = addTaskService.add(request);
         System.out.println("Received response: " + response);

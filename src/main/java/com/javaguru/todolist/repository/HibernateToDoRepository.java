@@ -12,7 +12,7 @@ import javax.transaction.Transactional;
 
 @Repository
 @Transactional
-class HibernateToDoRepository implements HibernateRepository {
+class HibernateToDoRepository implements HibernateRepository<ToDoEntity> {
 
     private final SessionFactory sessionFactory;
 
