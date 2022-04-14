@@ -2,10 +2,12 @@ package com.javaguru.todolist.console;
 
 import com.javaguru.todolist.core.GetToDoByIdService;
 
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
+@Order(3)
 @Component
 class FindByIdToDoUIAction implements UIAction {
 

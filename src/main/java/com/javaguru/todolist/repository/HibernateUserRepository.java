@@ -17,7 +17,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 class HibernateUserRepository implements HibernateRepository<UserEntity> {
 
-    private SessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
 
     @Override
     public UserEntity save(UserEntity entity) {
@@ -27,12 +27,17 @@ class HibernateUserRepository implements HibernateRepository<UserEntity> {
 
     @Override
     public List<UserEntity> findAll() {
-        return sessionFactory.getCurrentSession().createQuery("SELECT u FROM users u").getResultList();
+        return sessionFactory.getCurrentSession().createQuery("SELECT u FROM user u").getResultList();
     }
 
     @Override
     public Optional<UserEntity> findById(Integer id) {
         var entity = sessionFactory.getCurrentSession().get(UserEntity.class, id);
         return Optional.ofNullable(entity);
+    }
+
+    @Override
+    public void update(UserEntity entity) {
+        sessionFactory.getCurrentSession().update(entity);
     }
 }

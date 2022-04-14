@@ -3,12 +3,14 @@ package com.javaguru.todolist.console;
 import com.javaguru.todolist.core.UserService;
 import com.javaguru.todolist.dto.AddUserRequest;
 
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
 import lombok.AllArgsConstructor;
 
+@Order(0)
 @Component
 @AllArgsConstructor
 class AddUserUIAction implements UIAction {

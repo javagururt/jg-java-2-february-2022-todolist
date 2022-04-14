@@ -18,7 +18,7 @@ public class UpdateToDoService {
     public void update(UpdateToDoRequest request) {
         repository.findById(request.getId())
                 .map(entity -> updateFields(entity, request))
-                .ifPresent(repository::save);
+                .ifPresent(repository::update);
     }
 
     private ToDoEntity updateFields(ToDoEntity entity, UpdateToDoRequest request) {
@@ -26,6 +26,7 @@ public class UpdateToDoService {
         updatedEntity.setId(entity.getId());
         updatedEntity.setDescription(request.getDescription());
         updatedEntity.setName(request.getName());
+        updatedEntity.setUserId(entity.getUserId());
         return updatedEntity;
     }
 }

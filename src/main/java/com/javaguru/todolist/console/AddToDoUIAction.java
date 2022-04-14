@@ -4,10 +4,12 @@ import com.javaguru.todolist.core.AddToDoService;
 import com.javaguru.todolist.dto.AddToDoRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
+@Order(1)
 @Component
 public class AddToDoUIAction implements UIAction {
 

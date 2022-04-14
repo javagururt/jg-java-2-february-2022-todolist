@@ -1,0 +1,3 @@
+Main: https://www.liquibase.org/
+
+Docs: https://docs.liquibase.com/concepts/changelogs/working-with-changelogs.html

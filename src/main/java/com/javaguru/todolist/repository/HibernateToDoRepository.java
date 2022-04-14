@@ -12,7 +12,7 @@ import javax.transaction.Transactional;
 
 @Repository
 @Transactional
-class HibernateToDoRepository implements HibernateRepository<ToDoEntity> {
+public class HibernateToDoRepository implements HibernateRepository<ToDoEntity> {
 
     private final SessionFactory sessionFactory;
 
@@ -29,12 +29,17 @@ class HibernateToDoRepository implements HibernateRepository<ToDoEntity> {
     @Override
     public List<ToDoEntity> findAll() {
 //        return sessionFactory.getCurrentSession().createCriteria(ToDoEntity.class).list();
-        return sessionFactory.getCurrentSession().createQuery("SELECT t FROM todo t").getResultList();
+        return sessionFactory.getCurrentSession().createQuery("SELECT t FROM ToDoEntity t").getResultList();
     }
 
     @Override
     public Optional<ToDoEntity> findById(Integer id) {
         var entity = sessionFactory.getCurrentSession().get(ToDoEntity.class, id);
         return Optional.ofNullable(entity);
+    }
+
+    @Override
+    public void update(ToDoEntity entity) {
+        sessionFactory.getCurrentSession().update(entity);
     }
 }

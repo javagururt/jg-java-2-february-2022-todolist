@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <changeSet id="create.table.users" author="ruslans.tufetulovs">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="users"/>
+            </not>
+        </preConditions>
+        <createTable tableName="users">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="username" type="VARCHAR(45)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create.table.todo" author="ruslan">
+        <createTable tableName="todo">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(70)"/>
+            <column name="description" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="add.column.user_id.to.todo" author="ruslan">
+        <addColumn tableName="todo">
+            <column name="user_id" type="INT"/>
+        </addColumn>
+        <addForeignKeyConstraint baseTableName="todo"
+                                 constraintName="fk_todo_user_id"
+                                 baseColumnNames="user_id"
+                                 referencedTableName="users"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="insert.default.users" author="ruslan" context="test">
+        <insert tableName="users">
+            <column name="username" value="admin"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

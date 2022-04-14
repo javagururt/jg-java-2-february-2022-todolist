@@ -12,4 +12,6 @@ public interface HibernateRepository<T> {
     List<T> findAll();
 
     Optional<T> findById(Integer id);
+
+    void update(T entity);
 }
