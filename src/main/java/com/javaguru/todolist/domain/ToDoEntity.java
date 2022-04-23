@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -31,7 +30,6 @@ public class ToDoEntity {
 //    @JoinColumn(name = "user_id", referencedColumnName = "id")
 //    private UserEntity userEntity;
     @Column(name = "user_id")
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private Integer userId;
 
 }
