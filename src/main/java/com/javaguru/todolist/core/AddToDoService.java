@@ -25,7 +25,7 @@ public class AddToDoService {
         log.info("Received request: {}", request);
         var validationResult = validationService.validate(request);
         if (!validationResult.isEmpty()) {
-            log.info("Validation failed, error: {}", validationResult);
+            log.warn("Validation failed, error: {}", validationResult);
             var response = new AddToDoResponse();
             response.setErrors(validationResult);
             return response;
@@ -36,7 +36,7 @@ public class AddToDoService {
         log.info("Successfully saved: {}", createdEntity);
         var response = new AddToDoResponse();
         response.setCreatedToDoId(createdEntity.getId());
-        log.info("Sending response: {}", response);
+        log.debug("Sending response: {}", response);
         return response;
     }
 
