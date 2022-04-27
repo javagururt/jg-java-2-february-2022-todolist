@@ -33,7 +33,7 @@ public class AddToDoService {
         var entity = convert(request);
         entity.setUserId(request.getUserId());
         var createdEntity = todoRepository.save(entity);
-        log.debug("Successfully saved: {}", createdEntity);
+        log.info("Successfully saved: {}", createdEntity);
         var response = new AddToDoResponse();
         response.setCreatedToDoId(createdEntity.getId());
         log.debug("Sending response: {}", response);
