@@ -35,6 +35,9 @@ dependencies {
 
 	implementation 'org.liquibase:liquibase-core:4.9.1'
 
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.6.7'
+
+
 }
 
 test {

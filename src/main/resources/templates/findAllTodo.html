@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo List</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th> Name </th>
+        <th> Description </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="todo : ${todos}">
+        <td><span th:text="${todo.name}"> Name </span></td>
+        <td><span th:text="${todo.description}"> Description </span></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
