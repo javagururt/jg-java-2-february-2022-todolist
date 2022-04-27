@@ -9,6 +9,9 @@ import com.javaguru.todolist.repository.HibernateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class AddToDoService {
 
@@ -19,24 +22,21 @@ public class AddToDoService {
     private ValidationService validationService;
 
     public AddToDoResponse add(AddToDoRequest request) {
-        System.out.println("Received request: " + request);
+        log.info("Received request: {}", request);
         var validationResult = validationService.validate(request);
         if (!validationResult.isEmpty()) {
-            System.out.println("Validation failed, errors: " + validationResult);
+            log.warn("Validation failed, error: {}", validationResult);
             var response = new AddToDoResponse();
             response.setErrors(validationResult);
             return response;
         }
-//        var user = userRepository.findById(request.getUserId())
-//                .orElseThrow(() -> new IllegalArgumentException("User with id " + request.getUserId() + " is not found."));
-
         var entity = convert(request);
         entity.setUserId(request.getUserId());
         var createdEntity = todoRepository.save(entity);
-        System.out.println("Successfully saved: " + createdEntity);
+        log.debug("Successfully saved: {}", createdEntity);
         var response = new AddToDoResponse();
         response.setCreatedToDoId(createdEntity.getId());
-        System.out.println("Sending response: " + response);
+        log.debug("Sending response: {}", response);
         return response;
     }
 
