@@ -22,31 +22,23 @@ public class HibernateToDoRepository implements HibernateRepository<ToDoEntity> 
 
     @Override
     public ToDoEntity save(ToDoEntity toDoEntity) {
-        try (var session = sessionFactory.openSession()) {
-            session.save(toDoEntity);
-            return toDoEntity;
-        }
+        sessionFactory.getCurrentSession().save(toDoEntity);
+        return toDoEntity;
     }
 
     @Override
     public List<ToDoEntity> findAll() {
-        try (var session = sessionFactory.openSession()) {
-            return session.createQuery("SELECT t FROM ToDoEntity t").getResultList();
-        }
+        return sessionFactory.getCurrentSession().createQuery("SELECT t FROM ToDoEntity t").getResultList();
     }
 
     @Override
     public Optional<ToDoEntity> findById(Integer id) {
-        try (var session = sessionFactory.openSession()) {
-            var entity = session.get(ToDoEntity.class, id);
-            return Optional.ofNullable(entity);
-        }
+        var entity = sessionFactory.getCurrentSession().get(ToDoEntity.class, id);
+        return Optional.ofNullable(entity);
     }
 
     @Override
     public void update(ToDoEntity entity) {
-        try (var session = sessionFactory.openSession()) {
-            session.update(entity);
-        }
+        sessionFactory.getCurrentSession().update(entity);
     }
 }

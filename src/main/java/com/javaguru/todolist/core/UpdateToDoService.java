@@ -6,6 +6,8 @@ import com.javaguru.todolist.repository.HibernateRepository;
 
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
+
 @Component
 public class UpdateToDoService {
 
@@ -15,6 +17,7 @@ public class UpdateToDoService {
         this.repository = repository;
     }
 
+    @Transactional
     public void update(UpdateToDoRequest request) {
         repository.findById(request.getId())
                 .map(entity -> updateFields(entity, request))

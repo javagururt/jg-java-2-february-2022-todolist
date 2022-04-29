@@ -21,18 +21,18 @@ class HibernateUserRepository implements HibernateRepository<UserEntity> {
 
     @Override
     public UserEntity save(UserEntity entity) {
-        sessionFactory.openSession().save(entity);
+        sessionFactory.getCurrentSession().save(entity);
         return entity;
     }
 
     @Override
     public List<UserEntity> findAll() {
-        return sessionFactory.openSession().createQuery("SELECT u FROM user u").getResultList();
+        return sessionFactory.getCurrentSession().createQuery("SELECT u FROM user u").getResultList();
     }
 
     @Override
     public Optional<UserEntity> findById(Integer id) {
-        var entity = sessionFactory.openSession().get(UserEntity.class, id);
+        var entity = sessionFactory.getCurrentSession().get(UserEntity.class, id);
         return Optional.ofNullable(entity);
     }
 
