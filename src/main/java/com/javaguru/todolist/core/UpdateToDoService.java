@@ -25,11 +25,10 @@ public class UpdateToDoService {
     }
 
     private ToDoEntity updateFields(ToDoEntity entity, UpdateToDoRequest request) {
-        var updatedEntity = new ToDoEntity();
-        updatedEntity.setId(entity.getId());
-        updatedEntity.setDescription(request.getDescription());
-        updatedEntity.setName(request.getName());
-        updatedEntity.setUserId(entity.getUserId());
-        return updatedEntity;
+        entity.setId(entity.getId());
+        entity.setDescription(request.getDescription());
+        entity.setName(request.getName());
+        entity.setUserId(entity.getUserId());
+        return entity;
     }
 }
