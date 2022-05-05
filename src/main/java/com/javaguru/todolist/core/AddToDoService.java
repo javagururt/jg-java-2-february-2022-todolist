@@ -1,5 +1,6 @@
 package com.javaguru.todolist.core;
 
+import com.javaguru.todolist.core.converters.AddToDoRequestToToDoEntityConverter;
 import com.javaguru.todolist.core.validation.ValidationService;
 import com.javaguru.todolist.domain.ToDoEntity;
 import com.javaguru.todolist.dto.AddToDoRequest;
@@ -19,31 +20,15 @@ public class AddToDoService {
     private HibernateRepository<ToDoEntity> todoRepository;
 
     @Autowired
-    private ValidationService validationService;
+    private AddToDoRequestToToDoEntityConverter converter;
 
     public AddToDoResponse add(AddToDoRequest request) {
-        log.info("Received request: {}", request);
-        var validationResult = validationService.validate(request);
-        if (!validationResult.isEmpty()) {
-            log.warn("Validation failed, error: {}", validationResult);
-            var response = new AddToDoResponse();
-            response.setErrors(validationResult);
-            return response;
-        }
-        var entity = convert(request);
-        entity.setUserId(request.getUserId());
+        var entity = converter.convert(request);
         var createdEntity = todoRepository.save(entity);
-        log.info("Successfully saved: {}", createdEntity);
+        log.debug("Successfully saved: {}", createdEntity);
         var response = new AddToDoResponse();
         response.setCreatedToDoId(createdEntity.getId());
         log.debug("Sending response: {}", response);
         return response;
-    }
-
-    private ToDoEntity convert(AddToDoRequest request) {
-        ToDoEntity entity = new ToDoEntity();
-        entity.setName(request.getName());
-        entity.setDescription(request.getDescription());
-        return entity;
     }
 }

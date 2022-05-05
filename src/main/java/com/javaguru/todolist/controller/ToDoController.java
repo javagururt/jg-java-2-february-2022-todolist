@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,21 +34,25 @@ class ToDoController {
 
     @GetMapping("/todos")
     public FindAllToDoResponse findAll() {
+        log.debug("Find all todo request received");
         return findAllToDoService.findAll();
     }
 
     @GetMapping("/todos/{id}")
     public GetByIdToDoResponse findById(@PathVariable("id") Integer id) {
+        log.debug("Find by id request received, id: {}", id);
         return getToDoByIdService.getById(id);
     }
 
     @PostMapping("/todos")
-    public AddToDoResponse add(@RequestBody AddToDoRequest request) {
+    public AddToDoResponse add(@RequestBody @Valid AddToDoRequest request) {
+        log.info("Received add todo request: {}", request);
         return addToDoService.add(request);
     }
 
     @PutMapping("/todos")
     public void update(@RequestBody UpdateToDoRequest request) {
+        log.debug("Received update todo request: {}", request);
         updateToDoService.update(request);
     }
 

@@ -5,13 +5,16 @@ import com.javaguru.todolist.dto.FindAllToDoResponse;
 import com.javaguru.todolist.dto.ToDoDTO;
 import com.javaguru.todolist.repository.HibernateRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class FindAllToDoService {
 
     private final HibernateRepository<ToDoEntity> repository;
 
+    @Autowired
     public FindAllToDoService(HibernateRepository<ToDoEntity> repository) {
         this.repository = repository;
     }

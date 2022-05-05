@@ -1,3 +1,5 @@
+server:
+  port: 8081
 spring:
   jpa:
     hibernate:
@@ -14,3 +16,12 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   liquibase:
     change-log: liquibase-changeLog.xml
+logging:
+  level:
+    com.javaguru: INFO
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, metrics, info, prometheus
+      base-path: /
