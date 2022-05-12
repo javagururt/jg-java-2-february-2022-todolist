@@ -24,7 +24,7 @@ class ToDoUIController {
     @GetMapping("/findAllTodo")
     public String findAllTodo(Model model) {
         var response = findAllToDoService.findAll();
-        model.addAttribute("todos", response.getTodos());
+        model.addAttribute("todos", response);
         return "findAllTodo";
     }
     @GetMapping("/addTodo")

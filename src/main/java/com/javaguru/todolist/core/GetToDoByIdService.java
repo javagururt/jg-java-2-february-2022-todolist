@@ -3,18 +3,17 @@ package com.javaguru.todolist.core;
 import com.javaguru.todolist.domain.ToDoEntity;
 import com.javaguru.todolist.dto.GetByIdToDoResponse;
 import com.javaguru.todolist.dto.ToDoDTO;
-import com.javaguru.todolist.repository.HibernateRepository;
+import com.javaguru.todolist.repository.ToDoRepository;
 
 import org.springframework.stereotype.Component;
 
+import lombok.AllArgsConstructor;
+
 @Component
+@AllArgsConstructor
 public class GetToDoByIdService {
 
-    private final HibernateRepository<ToDoEntity> toDoRepository;
-
-    public GetToDoByIdService(HibernateRepository<ToDoEntity> toDoRepository) {
-        this.toDoRepository = toDoRepository;
-    }
+    private final ToDoRepository toDoRepository;
 
     public GetByIdToDoResponse getById(Integer id) {
         return toDoRepository.findById(id)

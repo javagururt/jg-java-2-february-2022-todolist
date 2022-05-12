@@ -2,30 +2,28 @@ package com.javaguru.todolist.core;
 
 import com.javaguru.todolist.domain.ToDoEntity;
 import com.javaguru.todolist.dto.UpdateToDoRequest;
-import com.javaguru.todolist.repository.HibernateRepository;
+import com.javaguru.todolist.repository.ToDoRepository;
 
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
 
+import lombok.AllArgsConstructor;
+
 @Component
+@AllArgsConstructor
 public class UpdateToDoService {
 
-    private final HibernateRepository<ToDoEntity> repository;
-
-    public UpdateToDoService(HibernateRepository<ToDoEntity> repository) {
-        this.repository = repository;
-    }
+    private final ToDoRepository repository;
 
     @Transactional
     public void update(UpdateToDoRequest request) {
         repository.findById(request.getId())
                 .map(entity -> updateFields(entity, request))
-                .ifPresent(repository::update);
+                .ifPresent(repository::save);
     }
 
     private ToDoEntity updateFields(ToDoEntity entity, UpdateToDoRequest request) {
-        entity.setId(entity.getId());
         entity.setDescription(request.getDescription());
         entity.setName(request.getName());
         entity.setUserId(entity.getUserId());

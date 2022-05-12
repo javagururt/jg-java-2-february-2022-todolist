@@ -3,7 +3,7 @@ package com.javaguru.todolist.core;
 import com.javaguru.todolist.domain.UserEntity;
 import com.javaguru.todolist.dto.AddUserRequest;
 import com.javaguru.todolist.dto.AddUserResponse;
-import com.javaguru.todolist.repository.HibernateRepository;
+import com.javaguru.todolist.repository.UserRepository;
 
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class UserService {
 
-    private final HibernateRepository<UserEntity> repository;
+    private final UserRepository repository;
 
     public AddUserResponse addUser(AddUserRequest request) {
         var entity = convert(request);

@@ -6,8 +6,8 @@ import com.javaguru.todolist.core.GetToDoByIdService;
 import com.javaguru.todolist.core.UpdateToDoService;
 import com.javaguru.todolist.dto.AddToDoRequest;
 import com.javaguru.todolist.dto.AddToDoResponse;
-import com.javaguru.todolist.dto.FindAllToDoResponse;
 import com.javaguru.todolist.dto.GetByIdToDoResponse;
+import com.javaguru.todolist.dto.ToDoDTO;
 import com.javaguru.todolist.dto.UpdateToDoRequest;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +34,15 @@ class ToDoController {
     private final UpdateToDoService updateToDoService;
 
     @GetMapping("/todos")
-    public FindAllToDoResponse findAll() {
+    public List<ToDoDTO> findAll(@RequestParam(required = false) String name,
+                                 @RequestParam(required = false) String description,
+                                 @RequestParam(required = false) String username) {
+        if (name != null || description != null) {
+            return findAllToDoService.findAllBy(name, description);
+        }
+        if (username != null) {
+            return findAllToDoService.findAllByUserName(username);
+        }
         return findAllToDoService.findAll();
     }
 
@@ -46,8 +56,8 @@ class ToDoController {
         return addToDoService.add(request);
     }
 
-    @PutMapping("/todos")
-    public void update(@RequestBody UpdateToDoRequest request) {
+    @PutMapping("/todos/{id}")
+    public void update(@PathVariable("id") Integer id, @RequestBody UpdateToDoRequest request) {
         updateToDoService.update(request);
     }
 
