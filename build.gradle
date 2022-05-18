@@ -40,6 +40,9 @@ dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.6.7'
 
+	testImplementation 'com.h2database:h2:2.1.212'
+
+
 
 }
 

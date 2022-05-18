@@ -3,13 +3,14 @@ package com.javaguru.todolist.repository;
 import com.javaguru.todolist.domain.ToDoEntity;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface ToDoRepository extends JpaRepository<ToDoEntity, Integer> {
+public interface ToDoRepository extends JpaRepository<ToDoEntity, Integer>, JpaSpecificationExecutor<ToDoEntity> {
 
     List<ToDoEntity> findAllByName(String name);
 

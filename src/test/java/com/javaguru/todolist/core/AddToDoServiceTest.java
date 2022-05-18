@@ -1,5 +1,11 @@
 package com.javaguru.todolist.core;
 
+import com.javaguru.todolist.core.validation.CoreError;
+import com.javaguru.todolist.core.validation.ValidationService;
+import com.javaguru.todolist.domain.ToDoEntity;
+import com.javaguru.todolist.dto.AddToDoResponse;
+import com.javaguru.todolist.repository.ToDoRepository;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -8,14 +14,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
-import com.javaguru.todolist.core.validation.CoreError;
-import com.javaguru.todolist.core.validation.ValidationService;
-import com.javaguru.todolist.domain.ToDoEntity;
-import com.javaguru.todolist.dto.AddToDoResponse;
-import com.javaguru.todolist.repository.HibernateRepository;
-
 import static com.javaguru.todolist.core.TestDtoFactory.createRequest;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
@@ -26,7 +26,7 @@ class AddToDoServiceTest {
 
 
     @Mock
-    private HibernateRepository repository;
+    private ToDoRepository repository;
 
     @Mock
     private ValidationService validationService;
@@ -72,7 +72,7 @@ class AddToDoServiceTest {
     }
 
     private ToDoEntity entity(Integer id) {
-        var entity =  new ToDoEntity();
+        var entity = new ToDoEntity();
         entity.setId(id);
         entity.setName("TEST_NAME");
         entity.setDescription("TEST_DESCRIPTION");
