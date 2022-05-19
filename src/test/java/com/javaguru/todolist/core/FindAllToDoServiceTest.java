@@ -45,8 +45,8 @@ class FindAllToDoServiceTest {
         return List.of(returnEntity);
     }
 
-    private FindAllToDoResponse response() {
+    private List<ToDoDTO> response() {
         var dto = new ToDoDTO(1, "Test Name", "Test description");
-        return new FindAllToDoResponse(List.of(dto));
+        return List.of(dto);
     }
 }
