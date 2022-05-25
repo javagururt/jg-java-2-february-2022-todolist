@@ -1,0 +1,7 @@
+<dataset reset_sequences="todo_sequence">
+    <todo id="1000"
+          name="test name"
+          description="test description"
+    />
+
+</dataset>

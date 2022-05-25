@@ -1,0 +1,11 @@
+<dataset reset_sequences="todo_sequence">
+    <users id="2000"
+           username="Administrator"
+    />
+    <todo id="1"
+          name="test name"
+          description="test description"
+          user_id="2000"
+    />
+
+</dataset>
